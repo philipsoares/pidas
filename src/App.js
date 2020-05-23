@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+//import 'highlight.js/styles/dracula.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Home from "./Components/Home";
+import Post from "./Components/Post/Post";
+import CheckPost from "./Components/CheckPost";
+
+import "spectre.css/dist/spectre.min.css";
+import "prismjs/themes/prism-okaidia.css";
+import "./App.scss";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          {/* <Route exact path="/blog/:path/" component={Post} /> */}
+          <Route exact path="/blog/:path/" component={CheckPost} />
+        </Switch>
+      </Router>
+      <Footer />
     </div>
   );
 }
