@@ -12,8 +12,8 @@ const Footer = () => {
           Desenvolvido por Philip Soares com Drupal e React
         </p>
         <div>
-          <img srcSet={twitter} alt="Logo" />
-          <img srcSet={linkedin} alt="Logo" />
+          <img srcSet={twitter} alt="Twitter Logo" />
+          <img srcSet={linkedin} alt="LinkedIn Logo" />
         </div>
       </div>
     </footer>
