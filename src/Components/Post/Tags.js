@@ -15,7 +15,7 @@ const Tags = ({ children }) => {
       .get(Settings.URL_API + "jsonapi/node/article/" + postId + "/field_tags")
       .then((res) => {
         setTags(res.data.data);
-        console.log(res.data.data);
+        //console.log(res.data.data);
         setLoad(true);
       })
       .catch((err) => {
@@ -32,19 +32,12 @@ const Tags = ({ children }) => {
             <Link
               to={{
                 pathname: item.attributes.path.alias,
-                state: {
-                  tagName: item.attributes.name,
-                },
               }}
               key={item.id}
               className="chip"
             >
               {item.attributes.name}
             </Link>
-
-            /* <a href={item.attributes.path.alias} key={item.id} className="chip">
-              {item.attributes.name}
-            </a> */
           ))}
         </div>
       </div>

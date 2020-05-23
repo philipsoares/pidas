@@ -1,19 +1,15 @@
-//import 'highlight.js/styles/dracula.css';
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import axios from "axios";
 
-import Body from "./Body";
 import Title from "./Title";
 import Date from "./Date";
 import Tags from "./Tags";
 import Image from "./Image";
+import Body from "./Body";
 
-function Post(children) {
-  console.log(children);
-  const location = useLocation();
-  //console.log(location);
-  const postId = location.state.postId;
+function Post(props) {
+  //console.log(props);
+  const postId = props.postId;
   const [post, setPost] = useState([]);
   const [load, setLoad] = useState(false);
   const [error, setError] = useState("");
