@@ -1,4 +1,5 @@
 import React from "react";
+import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 
 const Paginator = (props) => {
   function pagina(page_url) {
@@ -10,23 +11,29 @@ const Paginator = (props) => {
     //setPager("page[offset]=" + page_offset);
   }
   return (
-    <div className="paginador">
+    <div className="container grid-md paginator">
       <ul className="pagination">
         {props.children.links.hasOwnProperty("prev") ? (
           <li className="page-item">
             {/* Use href="/#" to replace href="#" OR href="javascript:;" OR href="javascript:void(0);" */}
             <a href="/#" onClick={() => pagina(props.children.links.prev.href)}>
-              Previous
+              <FaAngleDoubleLeft />
+              <span>Previous</span>
             </a>
           </li>
-        ) : null}
+        ) : (
+          <li></li>
+        )}
         {props.children.links.hasOwnProperty("next") ? (
           <li className="page-item">
             <a href="/#" onClick={() => pagina(props.children.links.next.href)}>
-              Next
+              <span>Next</span>
+              <FaAngleDoubleRight />
             </a>
           </li>
-        ) : null}
+        ) : (
+          <li></li>
+        )}
       </ul>
     </div>
   );

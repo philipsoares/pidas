@@ -1,7 +1,7 @@
 import React from "react";
 
 const Title = ({ children }) => {
-  return <h1>{children.attributes.title}</h1>;
+  return <h3>{children.attributes.title}</h3>;
 };
 
 export default Title;

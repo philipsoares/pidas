@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import reactHtmlParser from "react-html-parser";
 import Prism from "prismjs";
 
+import "prismjs/themes/prism-okaidia.css";
+
 const Body = ({ children }) => {
   // const {
   //   body: [{ value: mybody }],

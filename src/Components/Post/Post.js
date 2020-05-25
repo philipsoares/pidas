@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Title from "./Title";
-import Date from "./Date";
+import PostDate from "./PostDate";
 import Tags from "./Tags";
 import Image from "./Image";
 import Body from "./Body";
@@ -37,7 +37,7 @@ function Post(props) {
             <article className="card padding-top-bottom-large">
               <header className="card-header text-center">
                 <Title children={post} />
-                <Date children={post} />
+                <PostDate children={post} />
                 <Tags children={post} />
               </header>
 

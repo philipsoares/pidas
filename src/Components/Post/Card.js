@@ -6,7 +6,7 @@ import * as Settings from "../../utils/settings";
 
 import Image from "../../Components/Post/Image";
 import Title from "../../Components/Post/Title";
-import Date from "../../Components/Post/Date";
+import PostDate from "../../Components/Post/PostDate";
 import Tags from "../../Components/Post/Tags";
 import Summary from "../../Components/Post/Summary";
 import Paginator from "../../Components/Post/Paginator";
@@ -26,7 +26,7 @@ function Card(props) {
     axios
       .get(
         Settings.URL_API +
-          "jsonapi/node/article?sort=-created&page[limit]=2&" +
+          "jsonapi/node/article?sort=created&page[limit]=2&" +
           pager +
           tagName
       )
@@ -68,7 +68,7 @@ function Card(props) {
                         <Title children={item} />
                       </Link>
 
-                      <Date children={item} />
+                      <PostDate children={item} />
                       <Tags children={item} />
                     </header>
 

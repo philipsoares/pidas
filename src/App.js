@@ -10,8 +10,6 @@ import Footer from "./Components/Footer";
 import Card from "./Components/Post/Card";
 import Post from "./Components/Post/Post";
 
-import "spectre.css/dist/spectre.min.css";
-import "prismjs/themes/prism-okaidia.css";
 import "./App.scss";
 
 function App() {
@@ -56,8 +54,9 @@ function App() {
           <div>{error}</div>
         ) : (
           <div className="App">
-            <Header />
             <Router>
+              <Header tags={tagsPaths} />
+
               <Switch>
                 <Route exact path="/" component={Card} />
                 {postsPaths.data.map((item) => (
