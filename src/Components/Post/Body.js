@@ -3,14 +3,10 @@ import reactHtmlParser from "react-html-parser";
 import Prism from "prismjs";
 
 import "prismjs/themes/prism-okaidia.css";
+//import 'highlight.js/styles/dracula.css';
 
-const Body = ({ children }) => {
-  // const {
-  //   body: [{ value: mybody }],
-  // } = children;
-
-  const bodyText = children.attributes.body.value;
-
+const Body = ({ post }) => {
+  const bodyText = post.attributes.body.value;
   const options = {
     decodeEntities: true,
   };

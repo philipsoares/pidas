@@ -1,17 +1,13 @@
-//import 'highlight.js/styles/dracula.css';
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 
 import * as Settings from "./settings";
-
 import { Loading, Error } from "./Components/Utils";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Card from "./Components/Post/Card";
 import Post from "./Components/Post/Post";
-
-import "./App.scss";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -52,7 +48,7 @@ function App() {
         {error ? (
           <Error error={error} />
         ) : (
-          <div className="App">
+          <div className="app">
             <Router>
               <Header tags={tags} />
               <Switch>

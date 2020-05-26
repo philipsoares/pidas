@@ -1,7 +1,7 @@
 import React from "react";
 
-const Title = ({ children }) => {
-  return <h3>{children.attributes.title}</h3>;
+const Title = ({ post }) => {
+  return <h3>{post.attributes.title}</h3>;
 };
 
 export default Title;

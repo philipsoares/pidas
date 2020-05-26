@@ -7,16 +7,16 @@ const Paginator = (props) => {
     let url = new URL(page_url);
     let page_offset = url.searchParams.get("page[offset]");
     //console.log(page_offset);
-    props.paginator("page[offset]=" + page_offset);
+    props.paginator("&page[offset]=" + page_offset);
     //setPager("page[offset]=" + page_offset);
   }
   return (
     <div className="container grid-md paginator">
       <ul className="pagination">
-        {props.children.links.hasOwnProperty("prev") ? (
+        {props.posts.links.hasOwnProperty("prev") ? (
           <li className="page-item">
             {/* Use href="/#" to replace href="#" OR href="javascript:;" OR href="javascript:void(0);" */}
-            <a href="/#" onClick={() => pagina(props.children.links.prev.href)}>
+            <a href="/#" onClick={() => pagina(props.posts.links.prev.href)}>
               <FaAngleDoubleLeft />
               <span>Previous</span>
             </a>
@@ -24,9 +24,9 @@ const Paginator = (props) => {
         ) : (
           <li></li>
         )}
-        {props.children.links.hasOwnProperty("next") ? (
+        {props.posts.links.hasOwnProperty("next") ? (
           <li className="page-item">
-            <a href="/#" onClick={() => pagina(props.children.links.next.href)}>
+            <a href="/#" onClick={() => pagina(props.posts.links.next.href)}>
               <span>Next</span>
               <FaAngleDoubleRight />
             </a>

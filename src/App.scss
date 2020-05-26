@@ -11,23 +11,12 @@ body {
   background-color: #eaeaea;
 }
 
-// .padding-top-bottom-medium {
-//   padding: 25px 0;
-// }
-// .padding-top-bottom-large {
-//   padding: 50px 0;
-// }
-
 img {
   max-width: 100%;
 }
 
 pre[class*="language-"] {
   margin-bottom: 1.2rem;
-}
-
-.text-center {
-  text-align: center;
 }
 
 .card {
@@ -46,7 +35,7 @@ pre[class*="language-"] {
 }
 
 // App
-.App {
+.app {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

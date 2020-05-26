@@ -1,10 +1,10 @@
 import React from "react";
 
-const PostDate = ({ children }) => {
-  const date = new Date(children.attributes.created).toLocaleDateString();
+const PostDate = ({ post }) => {
+  const date = new Date(post.attributes.created).toLocaleDateString();
 
   return (
-    <p className="post-date text-gray">
+    <p className="text-gray">
       <span>Publicado em </span>
       <time dateTime={date}>{date}</time>
     </p>

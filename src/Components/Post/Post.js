@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import { Loading } from "../Utils";
+import * as Settings from "../../settings";
+import { Loading, Error } from "../Utils";
 import Title from "./Title";
 import PostDate from "./PostDate";
 import Tags from "./Tags";
@@ -16,7 +17,7 @@ function Post(props) {
 
   useEffect(() => {
     axios
-      .get("http://pidas.docksal/jsonapi/node/article/" + postId)
+      .get(Settings.URL_API + `jsonapi/node/article/${postId}`)
       .then((res) => {
         setPost(res.data.data);
         setLoad(true);
@@ -31,19 +32,19 @@ function Post(props) {
     return (
       <>
         {error ? (
-          <div>{error}</div>
+          <Error error={error} />
         ) : (
           <div className="container grid-md">
-            <article className="card padding-top-bottom-large">
+            <article className="card">
               <header className="card-header text-center">
-                <Title children={post} />
-                <PostDate children={post} />
-                <Tags children={post} />
+                <Title post={post} />
+                <PostDate post={post} />
+                <Tags post={post} />
               </header>
 
-              <Image children={post} />
+              <Image post={post} />
 
-              <Body children={post} />
+              <Body post={post} />
             </article>
           </div>
         )}

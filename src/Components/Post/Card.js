@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import * as Settings from "../../settings";
-
-import { Loading } from "../Utils";
+import { Loading, Error } from "../Utils";
 import Image from "../../Components/Post/Image";
 import Title from "../../Components/Post/Title";
 import PostDate from "../../Components/Post/PostDate";
@@ -12,75 +11,62 @@ import Tags from "../../Components/Post/Tags";
 import Summary from "../../Components/Post/Summary";
 import Paginator from "../../Components/Post/Paginator";
 
-function Card(props) {
+function Card({ tagName }) {
   const [posts, setPosts] = useState([]);
-  const [pager, setPager] = useState("page[offset]=0");
+  const [pager, setPager] = useState("&page[offset]=0");
   const [load, setLoad] = useState(false);
   const [error, setError] = useState("");
 
-  var tagName = "";
-  if (props.tagName !== undefined) {
-    tagName = "&filter[field_tags.name][value]=" + props.tagName;
-  }
+  var tagFilter = "";
+  if (tagName) tagFilter = "&filter[field_tags.name][value]=" + tagName;
 
   useEffect(() => {
     axios
       .get(
         Settings.URL_API +
-          "jsonapi/node/article?sort=created&page[limit]=2&" +
-          pager +
-          tagName
+          `jsonapi/node/article?sort=created&page[limit]=2${pager}${tagFilter}`
       )
       .then((res) => {
         setPosts(res.data);
-        //console.log(res.data);
         setLoad(true);
       })
       .catch((err) => {
         setError(err.message);
         setLoad(true);
       });
-  }, [pager, tagName]);
+  }, [pager, tagFilter]);
 
   if (load) {
     return (
       <>
         {error ? (
-          <div>{error}</div>
+          <Error error={error} />
         ) : (
           <div className="container grid-md">
             <div className="columns">
               {posts.data.map((item) => (
                 <div className="column col-6 col-xs-12" key={item.id}>
-                  <article className="card padding-top-bottom-large">
-                    <Link
-                      to={{
-                        pathname: item.attributes.path.alias,
-                      }}
-                    >
-                      <Image children={item} />
+                  <article className="card">
+                    <Link to={item.attributes.path.alias}>
+                      <Image post={item} />
                     </Link>
                     <header className="card-header text-center">
-                      <Link
-                        to={{
-                          pathname: item.attributes.path.alias,
-                        }}
-                      >
-                        <Title children={item} />
+                      <Link to={item.attributes.path.alias}>
+                        <Title post={item} />
                       </Link>
-
-                      <PostDate children={item} />
-                      <Tags children={item} />
+                      <PostDate post={item} />
+                      <Tags post={item} />
                     </header>
-
-                    <Summary children={item} />
+                    <Summary post={item} />
                   </article>
                 </div>
               ))}
             </div>
             <Paginator
-              children={posts}
-              paginator={(pager) => setPager(pager)}
+              posts={posts}
+              paginator={(pager) => {
+                return setPager(pager);
+              }}
             />
           </div>
         )}
