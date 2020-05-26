@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import * as Settings from "../../utils/settings";
+import * as Settings from "../../settings";
 
 const Image = ({ children }) => {
   const imageId = children.relationships.field_image.data.id;

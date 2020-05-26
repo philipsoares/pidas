@@ -6,22 +6,11 @@ const Header = (props) => {
     <header className="header">
       <div className="d-flex container grid-md">
         <div className="logo">
-          <Link
-            to={{
-              pathname: "/",
-            }}
-          >
-            pidas.dev
-          </Link>
+          <Link to="/">pidas.dev</Link>
         </div>
         <nav>
           {props.tags.data.map((item) => (
-            <Link
-              to={{
-                pathname: item.attributes.path.alias,
-              }}
-              key={item.id}
-            >
+            <Link to={item.attributes.path.alias} key={item.id}>
               {item.attributes.name}
             </Link>
           ))}

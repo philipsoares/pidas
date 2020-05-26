@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import { Loading } from "../Utils";
 import Title from "./Title";
 import PostDate from "./PostDate";
 import Tags from "./Tags";
@@ -8,7 +9,6 @@ import Image from "./Image";
 import Body from "./Body";
 
 function Post(props) {
-  //console.log(props);
   const postId = props.postId;
   const [post, setPost] = useState([]);
   const [load, setLoad] = useState(false);
@@ -50,7 +50,7 @@ function Post(props) {
       </>
     );
   } else {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 }
 

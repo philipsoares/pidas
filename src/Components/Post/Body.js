@@ -9,7 +9,7 @@ const Body = ({ children }) => {
   //   body: [{ value: mybody }],
   // } = children;
 
-  const body = children.attributes.body.value;
+  const bodyText = children.attributes.body.value;
 
   const options = {
     decodeEntities: true,
@@ -21,7 +21,7 @@ const Body = ({ children }) => {
 
   return (
     <section className="card-body">
-      <div>{reactHtmlParser(body, options)}</div>
+      <div>{reactHtmlParser(bodyText, options)}</div>
     </section>
   );
 };

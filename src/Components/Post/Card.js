@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import * as Settings from "../../utils/settings";
+import * as Settings from "../../settings";
 
+import { Loading } from "../Utils";
 import Image from "../../Components/Post/Image";
 import Title from "../../Components/Post/Title";
 import PostDate from "../../Components/Post/PostDate";
@@ -86,7 +87,7 @@ function Card(props) {
       </>
     );
   } else {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 }
 

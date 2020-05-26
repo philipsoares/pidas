@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import * as Settings from "../../utils/settings";
+import * as Settings from "../../settings";
+
+import { Loading } from "../Utils";
 
 const Tags = ({ children }) => {
   const postId = children.id;
@@ -43,7 +45,7 @@ const Tags = ({ children }) => {
       </div>
     );
   } else {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 };
 

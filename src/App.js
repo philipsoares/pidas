@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 
-import * as Settings from "./utils/settings";
+import * as Settings from "./settings";
 
+import { Loading, Error } from "./Components/Utils";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Card from "./Components/Post/Card";
@@ -13,8 +14,8 @@ import Post from "./Components/Post/Post";
 import "./App.scss";
 
 function App() {
-  const [postsPaths, setPostsPaths] = useState([]);
-  const [tagsPaths, setTagsPaths] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [tags, setTags] = useState([]);
   const [loadPosts, setLoadPosts] = useState(false);
   const [loadTags, setLoadTags] = useState(false);
   const [error, setError] = useState("");
@@ -23,8 +24,7 @@ function App() {
     axios
       .get(Settings.URL_API + "jsonapi/node/article")
       .then((res) => {
-        setPostsPaths(res.data);
-        //console.log(res.data);
+        setPosts(res.data);
         setLoadPosts(true);
       })
       .catch((err) => {
@@ -37,8 +37,7 @@ function App() {
     axios
       .get(Settings.URL_API + "jsonapi/taxonomy_term/tags")
       .then((res) => {
-        setTagsPaths(res.data);
-        //console.log(res.data);
+        setTags(res.data);
         setLoadTags(true);
       })
       .catch((err) => {
@@ -51,15 +50,14 @@ function App() {
     return (
       <>
         {error ? (
-          <div>{error}</div>
+          <Error error={error} />
         ) : (
           <div className="App">
             <Router>
-              <Header tags={tagsPaths} />
-
+              <Header tags={tags} />
               <Switch>
                 <Route exact path="/" component={Card} />
-                {postsPaths.data.map((item) => (
+                {posts.data.map((item) => (
                   <Route
                     exact
                     key={item.id}
@@ -67,7 +65,7 @@ function App() {
                     render={(props) => <Post {...props} postId={item.id} />}
                   />
                 ))}
-                {tagsPaths.data.map((item) => (
+                {tags.data.map((item) => (
                   <Route
                     exact
                     key={item.id}
@@ -85,7 +83,7 @@ function App() {
       </>
     );
   } else {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 }
 
