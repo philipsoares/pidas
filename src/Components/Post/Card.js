@@ -8,12 +8,12 @@ import Image from "../../Components/Post/Image";
 import Title from "../../Components/Post/Title";
 import PostDate from "../../Components/Post/PostDate";
 import Tags from "../../Components/Post/Tags";
-import Summary from "../../Components/Post/Summary";
-import Paginator from "../../Components/Post/Paginator";
+//import Summary from "../../Components/Post/Summary";
+//import Paginator from "../../Components/Post/Paginator";
 
 function Card({ tagName }) {
   const [posts, setPosts] = useState([]);
-  const [pager, setPager] = useState("&page[offset]=0");
+  //const [pager, setPager] = useState("&page[offset]=0");
   const [load, setLoad] = useState(false);
   const [error, setError] = useState("");
 
@@ -35,7 +35,7 @@ function Card({ tagName }) {
         setError(err.message);
         setLoad(true);
       });
-  }, [pager, tagFilter]);
+  }, [tagFilter]);
 
   if (load) {
     return (
