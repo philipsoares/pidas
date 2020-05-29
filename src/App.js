@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(Settings.URL_API + "jsonapi/node/article")
+      .get(Settings.URL_API + "jsonapi/node/article?&filter[status][value]=1")
       .then((res) => {
         setPosts(res.data);
         setLoadPosts(true);
@@ -31,7 +31,9 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(Settings.URL_API + "jsonapi/taxonomy_term/tags")
+      .get(
+        Settings.URL_API + "jsonapi/taxonomy_term/tags?&filter[status][value]=1"
+      )
       .then((res) => {
         setTags(res.data);
         setLoadTags(true);

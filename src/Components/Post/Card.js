@@ -24,7 +24,8 @@ function Card({ tagName }) {
     axios
       .get(
         Settings.URL_API +
-          `jsonapi/node/article?sort=created&page[limit]=2${pager}${tagFilter}`
+          `jsonapi/node/article?&filter[status][value]=1&sort=-created${tagFilter}`
+        // `jsonapi/node/article?&filter[status][value]=1&sort=-created&page[limit]=2${pager}${tagFilter}`
       )
       .then((res) => {
         setPosts(res.data);
@@ -45,7 +46,7 @@ function Card({ tagName }) {
           <div className="container grid-md">
             <div className="columns">
               {posts.data.map((item) => (
-                <div className="column col-6 col-xs-12" key={item.id}>
+                <div className="column col-6 col-xs-12 pb-large" key={item.id}>
                   <article className="card">
                     <Link to={item.attributes.path.alias}>
                       <Image post={item} />
@@ -57,17 +58,17 @@ function Card({ tagName }) {
                       <PostDate post={item} />
                       <Tags post={item} />
                     </header>
-                    <Summary post={item} />
+                    {/* <Summary post={item} /> */}
                   </article>
                 </div>
               ))}
             </div>
-            <Paginator
+            {/* <Paginator
               posts={posts}
               paginator={(pager) => {
                 return setPager(pager);
               }}
-            />
+            /> */}
           </div>
         )}
       </>
