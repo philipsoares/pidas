@@ -1,17 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header className="header">
       <div className="d-flex container grid-md">
         <div className="logo">
-          <a href="/">Pidas.Dev</a>
+          <Link to="/">pidas.dev</Link>
         </div>
         <nav>
-          <a href="/html/">HTML</a>
-          <a href="/css/">CSS</a>
-          <a href="/js/">JavaScript</a>
-          <a href="/jquery/">jQuery</a>
+          {props.tags.data.map((item) => (
+            <Link to={item.attributes.path.alias} key={item.id}>
+              {item.attributes.name}
+            </Link>
+          ))}
         </nav>
       </div>
     </header>

@@ -2,13 +2,11 @@ import React, { useEffect } from "react";
 import reactHtmlParser from "react-html-parser";
 import Prism from "prismjs";
 
-const Body = ({ children }) => {
-  // const {
-  //   body: [{ value: mybody }],
-  // } = children;
+import "prismjs/themes/prism-okaidia.css";
+//import 'highlight.js/styles/dracula.css';
 
-  const body = children.attributes.body.value;
-
+const Body = ({ post }) => {
+  const bodyText = post.attributes.body.value;
   const options = {
     decodeEntities: true,
   };
@@ -19,7 +17,7 @@ const Body = ({ children }) => {
 
   return (
     <section className="card-body">
-      <div>{reactHtmlParser(body, options)}</div>
+      <div>{reactHtmlParser(bodyText, options)}</div>
     </section>
   );
 };

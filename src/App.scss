@@ -1,44 +1,71 @@
+$primary-color: #303742;
+//$dark-color: #3e396b;
+
+// Import full Spectre source code
+@import "node_modules/spectre.css/src/spectre";
+
 // Utils
 body {
   background-color: #eaeaea;
 }
 
-.padding-top-bottom-medium {
-  padding: 25px 0;
-}
-.padding-top-bottom-large {
-  padding: 50px 0;
-}
-
-.card {
-  border: 0;
-  box-shadow: 0 0.25rem 1rem rgba(48, 55, 66, 0.15);
-  height: 100%;
-}
-
 img {
   max-width: 100%;
 }
+
 pre[class*="language-"] {
   margin-bottom: 1.2rem;
 }
 
-.text-center {
-  text-align: center;
+.pb-large {
+  padding-bottom: 60px;
+}
+// App
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+// Card
+.card {
+  border: 0;
+  box-shadow: 0 0.25rem 1rem rgba(48, 55, 66, 0.15);
+  height: 100%;
+  padding-bottom: 15px;
+
+  a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #5f6061;
+    }
+  }
 }
 
 // Header
 .header {
   background-color: #3b4351;
-  padding: 0.8rem 0;
+  padding: 1rem 0;
   margin-bottom: 72px;
+
+  a {
+    color: #bcc3ce;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: #fff;
+    }
+  }
 
   > div {
     align-items: center;
-    color: #fff;
 
     .logo {
-      border: 2px solid;
+      border: 2px solid #bcc3ce;
       padding: 0 12px;
       font-size: 1.2rem;
     }
@@ -47,7 +74,6 @@ pre[class*="language-"] {
       margin-left: auto;
 
       a {
-        color: #bcc3ce;
         margin: 0 12px;
       }
     }
@@ -57,66 +83,49 @@ pre[class*="language-"] {
 // Footer
 .footer {
   background-color: #3b4351;
+  color: #bcc3ce;
   padding: 1rem 0;
   margin-top: 72px;
 
   > div {
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
-    color: #fff;
 
     .logo {
-      border: 2px solid;
+      border: 2px solid #bcc3ce;
       padding: 0 12px;
-      font-size: 1rem;
     }
 
     p {
+      display: flex;
+      font-size: 0.7rem;
       margin-bottom: 0;
     }
 
-    img {
-      max-width: 28px;
-      margin-left: 5px;
+    svg {
+      fill: #bcc3ce;
+      width: 21px;
+      height: 21px;
+      margin: 0 5px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        fill: #fff;
+      }
     }
   }
 }
 
-/* .App {
-  text-align: center;
-}
+// Paginator
+.paginator {
+  padding: 30px 0;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+  .pagination {
+    justify-content: space-between;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    a {
+      display: flex;
+      align-items: center;
+    }
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
