@@ -14,7 +14,7 @@ const Image = ({ post }) => {
 
   useEffect(() => {
     axios
-      .get(Settings.URL_API + `jsonapi/file/file/${imageId}`)
+      .get(Settings.URL_API + `/jsonapi/file/file/${imageId}`)
       .then((res) => {
         setImage(res.data.data);
         setLoad(true);
@@ -33,7 +33,7 @@ const Image = ({ post }) => {
         ) : (
           <div className="card-image">
             <img
-              srcSet={Settings.URL_API + image.attributes.uri.url}
+              srcSet={Settings.URL_SITE + image.attributes.uri.url}
               alt={alt}
             />
           </div>

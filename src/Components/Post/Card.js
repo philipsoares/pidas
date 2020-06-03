@@ -24,8 +24,8 @@ function Card({ tagName }) {
     axios
       .get(
         Settings.URL_API +
-          `jsonapi/node/article?&filter[status][value]=1&sort=-created${tagFilter}`
-        // `jsonapi/node/article?&filter[status][value]=1&sort=-created&page[limit]=2${pager}${tagFilter}`
+          `/jsonapi/node/article?&filter[status][value]=1&sort=-created${tagFilter}`
+        // `/jsonapi/node/article?&filter[status][value]=1&sort=-created&page[limit]=2${pager}${tagFilter}`
       )
       .then((res) => {
         setPosts(res.data);

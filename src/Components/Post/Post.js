@@ -17,7 +17,7 @@ function Post(props) {
 
   useEffect(() => {
     axios
-      .get(Settings.URL_API + `jsonapi/node/article/${postId}`)
+      .get(Settings.URL_API + `/jsonapi/node/article/${postId}`)
       .then((res) => {
         setPost(res.data.data);
         setLoad(true);

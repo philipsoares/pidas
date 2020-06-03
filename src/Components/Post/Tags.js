@@ -15,7 +15,7 @@ const Tags = ({ post }) => {
 
   useEffect(() => {
     axios
-      .get(Settings.URL_API + `jsonapi/node/article/${postId}/field_tags`)
+      .get(Settings.URL_API + `/jsonapi/node/article/${postId}/field_tags`)
       .then((res) => {
         setTags(res.data.data);
         setLoad(true);
